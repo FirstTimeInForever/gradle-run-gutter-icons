@@ -3,6 +3,16 @@
 
 formatting:
   Indentation:
-    continuationIndentSize: 8
+    continuationIndentSize: 4
   ParameterListWrapping:
-    indentSize: 8
+    indentSize: 4
+  NoWildcardImports:
+    active: false
+  SpacingAroundColon:
+    active: false
+
+style:
+  ReturnCount:
+    active: false
+  WildcardImport:
+    active: false

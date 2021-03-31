@@ -89,8 +89,6 @@ class GradleTasksLineMarkerProvider: RelatedItemLineMarkerProvider() {
     companion object {
         private val logger = logger<GradleTasksLineMarkerProvider>()
 
-        private const val notificationGroup = "firsttimeinforever.gradlerunguttericons"
-
         private val supportedPlainMethodNames = hashSetOf("register", "create")
         private val supportedDelegatesNames = hashSetOf("registering", "creating")
     }
