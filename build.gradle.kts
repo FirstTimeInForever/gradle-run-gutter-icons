@@ -31,6 +31,7 @@ dependencies {
 }
 
 intellij {
+    pluginName = properties("pluginName")
     version = platformVersion
     type = platformType
     updateSinceUntilBuild = true

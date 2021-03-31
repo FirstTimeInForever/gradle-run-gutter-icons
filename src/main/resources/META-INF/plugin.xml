@@ -1,6 +1,5 @@
 <idea-plugin>
     <id>firsttimeinforever.gradlerunguttericons</id>
-    <name>Gradle Run Gutter Icons</name>
     <vendor email="ivmposti@gmail.com" url="https://github.com/FirstTimeInForever/gradle-run-gutter-icons">
         FirstTimeInForever
     </vendor>
