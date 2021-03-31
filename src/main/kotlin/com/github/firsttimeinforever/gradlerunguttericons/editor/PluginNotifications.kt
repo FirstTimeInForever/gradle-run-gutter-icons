@@ -1,7 +1,9 @@
 package com.github.firsttimeinforever.gradlerunguttericons.editor
 
 import com.github.firsttimeinforever.gradlerunguttericons.Messages
-import com.intellij.notification.*
+import com.intellij.notification.NotificationBuilder
+import com.intellij.notification.NotificationGroupManager
+import com.intellij.notification.NotificationType
 import com.intellij.openapi.project.Project
 
 internal object PluginNotifications {
