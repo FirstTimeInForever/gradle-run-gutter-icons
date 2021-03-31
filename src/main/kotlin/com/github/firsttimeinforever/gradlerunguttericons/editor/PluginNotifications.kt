@@ -1,6 +1,6 @@
-package com.github.firsttimeinforever.gradlerunguttericon.editor
+package com.github.firsttimeinforever.gradlerunguttericons.editor
 
-import com.github.firsttimeinforever.gradlerunguttericon.Messages
+import com.github.firsttimeinforever.gradlerunguttericons.Messages
 import com.intellij.notification.*
 import com.intellij.openapi.project.Project
 

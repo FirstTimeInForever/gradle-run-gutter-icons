@@ -1,14 +1,10 @@
-package com.github.firsttimeinforever.gradlerunguttericon.editor
+package com.github.firsttimeinforever.gradlerunguttericons.editor
 
-import com.github.firsttimeinforever.gradlerunguttericon.Messages
+import com.github.firsttimeinforever.gradlerunguttericons.Messages
 import com.intellij.codeInsight.daemon.RelatedItemLineMarkerInfo
 import com.intellij.codeInsight.daemon.RelatedItemLineMarkerProvider
 import com.intellij.icons.AllIcons
 import com.intellij.navigation.GotoRelatedItem
-import com.intellij.notification.Notification
-import com.intellij.notification.NotificationBuilder
-import com.intellij.notification.NotificationGroup
-import com.intellij.notification.NotificationType
 import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.editor.markup.GutterIconRenderer
 import com.intellij.psi.PsiElement

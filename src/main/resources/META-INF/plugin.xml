@@ -1,7 +1,7 @@
 <idea-plugin>
-    <id>firsttimeinforever.gradlerunguttericon</id>
-    <name>Gradle Run Gutter Icon</name>
-    <vendor email="ivmposti@gmail.com" url="https://github.com/FirstTimeInForever/gradle-run-gutter-icon">
+    <id>firsttimeinforever.gradlerunguttericons</id>
+    <name>Gradle Run Gutter Icons</name>
+    <vendor email="ivmposti@gmail.com" url="https://github.com/FirstTimeInForever/gradle-run-gutter-icons">
         FirstTimeInForever
     </vendor>
 
@@ -11,7 +11,7 @@
     <depends>org.jetbrains.kotlin</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <codeInsight.lineMarkerProvider language="kotlin" implementationClass="com.github.firsttimeinforever.gradlerunguttericon.editor.GradleTasksLineMarkerProvider"/>
+        <codeInsight.lineMarkerProvider language="kotlin" implementationClass="com.github.firsttimeinforever.gradlerunguttericons.editor.GradleTasksLineMarkerProvider"/>
         <notificationGroup displayType="BALLOON" id="Gradle Run Gutter Icons"/>
     </extensions>
 </idea-plugin>

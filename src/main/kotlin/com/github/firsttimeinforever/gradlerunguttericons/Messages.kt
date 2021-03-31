@@ -1,4 +1,4 @@
-package com.github.firsttimeinforever.gradlerunguttericon
+package com.github.firsttimeinforever.gradlerunguttericons
 
 import com.intellij.AbstractBundle
 import org.jetbrains.annotations.NonNls

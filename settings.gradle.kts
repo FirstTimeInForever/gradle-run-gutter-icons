@@ -1,4 +1,4 @@
-rootProject.name = "gradle-run-gutter-icon"
+rootProject.name = "gradle-run-gutter-icons"
 
 pluginManagement {
     plugins {

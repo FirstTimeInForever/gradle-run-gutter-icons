@@ -1,4 +1,4 @@
-package com.github.firsttimeinforever.gradlerunguttericon.editor
+package com.github.firsttimeinforever.gradlerunguttericons.editor
 
 import com.intellij.openapi.module.ModuleUtil
 import com.intellij.openapi.project.Project
