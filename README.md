@@ -11,7 +11,7 @@ Currently, it only supports these types of task declaration:
 * `val task by tasks.registering(<taskName>)`
 * `val task by tasks.creating(<taskName>)`
 
-![Plugin Screenshot](images/plugin-screenshot.png)
+![Plugin Screenshot](https://raw.githubusercontent.com/FirstTimeInForever/gradle-run-gutter-icons/c260b52a0f3d1117c0b80bfc76cb555fcc113158/images/plugin-screenshot.png)
 <!-- Plugin description end -->
 
 ## Installation
