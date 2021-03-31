@@ -1,4 +1,4 @@
-# gradle-run-gutter-icon
+#  Gradle Run Gutter Icon ![](src/main/resources/META-INF/pluginIcon_dark.svg)
 
 ![Build](https://github.com/FirstTimeInForever/gradle-run-gutter-icon/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)

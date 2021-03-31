@@ -1,6 +1,6 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# gradle-run-gutter-icon Changelog
+# Gradle Run Gutter Icons Changelog
 
 ## [Unreleased]
 ### Added

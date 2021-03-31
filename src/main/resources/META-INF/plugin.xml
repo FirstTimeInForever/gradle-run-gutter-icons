@@ -1,19 +1,17 @@
 <idea-plugin>
-    <id>com.github.firsttimeinforever.gradlerunguttericon</id>
-    <name>gradle-run-gutter-icon</name>
-    <vendor>firsttimeinforever</vendor>
+    <id>firsttimeinforever.gradlerunguttericon</id>
+    <name>Gradle Run Gutter Icon</name>
+    <vendor email="ivmposti@gmail.com" url="https://github.com/FirstTimeInForever/gradle-run-gutter-icon">
+        FirstTimeInForever
+    </vendor>
 
-    <!-- Product and plugin compatibility requirements -->
-    <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.gradle</depends>
+    <depends>com.intellij.java</depends>
+    <depends>org.jetbrains.kotlin</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.firsttimeinforever.gradlerunguttericon.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.firsttimeinforever.gradlerunguttericon.services.MyProjectService"/>
+        <codeInsight.lineMarkerProvider language="kotlin" implementationClass="com.github.firsttimeinforever.gradlerunguttericon.editor.GradleTasksLineMarkerProvider"/>
+        <notificationGroup displayType="BALLOON" id="Gradle Run Gutter Icons"/>
     </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.firsttimeinforever.gradlerunguttericon.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>

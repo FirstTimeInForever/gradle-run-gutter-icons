@@ -1,3 +1,5 @@
 .gradle
-.idea
+.idea/*
+!.idea/icon.png
+!.idea/icon_dark.png
 build
