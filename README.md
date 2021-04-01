@@ -1,5 +1,9 @@
 #  ![](src/main/resources/META-INF/pluginIcon_dark.svg) Gradle Run Gutter Icons
 
+![Build](https://github.com/FirstTimeInForever/gradle-run-gutter-icon/workflows/Build/badge.svg)
+[![Version](https://img.shields.io/jetbrains/plugin/v/16443-gradle-run-gutter-icons.svg)](https://plugins.jetbrains.com/plugin/16443-gradle-run-gutter-icons)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/16443-gradle-run-gutter-icons.svg)](https://plugins.jetbrains.com/plugin/16443-gradle-run-gutter-icons)
+
 <!-- Plugin description -->
 This simple plugin adds run gutter icons for the `build.gradle.kts` tasks declarations. Then clicked, it executes declared gradle task just like `Execute Gradle Task` action.
 
