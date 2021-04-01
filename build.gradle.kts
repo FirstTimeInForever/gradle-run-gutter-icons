@@ -45,6 +45,8 @@ intellij {
 changelog {
     version = project.version.toString()
     groups = emptyList()
+    header = closure { version }
+    unreleasedTerm = "Latest"
 }
 
 detekt {

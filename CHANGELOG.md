@@ -1,4 +1,4 @@
 # Gradle Run Gutter Icons Changelog
 
-## [Unreleased]
+## Latest
 - Initial plugin release
