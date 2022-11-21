@@ -11,7 +11,7 @@ plugins {
     kotlin("jvm")
     id("org.jetbrains.intellij") version "0.7.2"
     id("org.jetbrains.changelog") version "1.1.2"
-    id("io.gitlab.arturbosch.detekt") version "1.15.0"
+    id("io.gitlab.arturbosch.detekt") version "1.22.0"
     id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
 }
 
