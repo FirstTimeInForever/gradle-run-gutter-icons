@@ -1,4 +1,3 @@
-import org.jetbrains.changelog.closure
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.tasks.RunIdeTask
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -10,7 +9,7 @@ plugins {
     id("java")
     kotlin("jvm")
     id("org.jetbrains.intellij") version "1.15.0"
-    id("org.jetbrains.changelog") version "1.1.2"
+    id("org.jetbrains.changelog") version "1.3.1"
 }
 
 val pluginSinceBuild: String by project
@@ -20,7 +19,6 @@ val platformType: String by project
 
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 intellij {
@@ -36,10 +34,10 @@ intellij {
 }
 
 changelog {
-    version = project.version.toString()
-    groups = emptyList()
-    header = closure { version }
-    unreleasedTerm = "Latest"
+    version.set(project.version.toString())
+    groups.set(emptyList())
+    header.set(version)
+    unreleasedTerm.set("Unreleased")
 }
 
 kotlin {
