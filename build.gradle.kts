@@ -1,4 +1,3 @@
-import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.changelog.closure
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.tasks.RunIdeTask
@@ -12,8 +11,6 @@ plugins {
     kotlin("jvm")
     id("org.jetbrains.intellij") version "1.15.0"
     id("org.jetbrains.changelog") version "1.1.2"
-    id("io.gitlab.arturbosch.detekt") version "1.15.0"
-    id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
 }
 
 val pluginSinceBuild: String by project
@@ -24,10 +21,6 @@ val platformType: String by project
 repositories {
     mavenCentral()
     jcenter()
-}
-
-dependencies {
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.15.0")
 }
 
 intellij {
@@ -49,17 +42,6 @@ changelog {
     unreleasedTerm = "Latest"
 }
 
-detekt {
-    config = files("./detekt-config.yml")
-    buildUponDefaultConfig = true
-
-    reports {
-        html.enabled = false
-        xml.enabled = false
-        txt.enabled = false
-    }
-}
-
 kotlin {
     compilerOptions {
         jvmTarget.set(JvmTarget.JVM_17)
@@ -74,9 +56,6 @@ java {
 }
 
 tasks {
-    withType<Detekt> {
-        jvmTarget = JavaVersion.VERSION_17.toString()
-    }
     patchPluginXml {
         version.set(project.version.toString())
         sinceBuild.set(pluginSinceBuild)
