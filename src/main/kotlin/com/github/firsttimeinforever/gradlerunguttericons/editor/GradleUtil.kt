@@ -9,15 +9,13 @@ import org.jetbrains.plugins.gradle.service.project.GradleProjectResolverUtil
 import org.jetbrains.plugins.gradle.util.GradleUtil
 
 internal object GradleUtil {
-    fun resolveTaskName(name: String, project: Project, virtualFile: VirtualFile): String? {
-        val module = ModuleUtil.findModuleForFile(virtualFile, project) ?: return null
-        val modulePath = GradleUtil.findGradleModuleData(module)?.let {
-            GradleProjectResolverUtil.getGradlePath(it.data).removeSuffix(":")
-        } ?: return null
-        return "$modulePath:$name"
+    private fun resolveTaskName(name: String, project: Project, file: VirtualFile): String? {
+        val module = ModuleUtil.findModuleForFile(file, project) ?: return null
+        val path = GradleProjectResolverUtil.getGradleIdentityPathOrNull(module)?.removeSuffix(":")
+        return "${path.orEmpty()}:$name"
     }
 
-    fun resolveTaskName(name: String, containingFile: PsiFile): String? {
+    private fun resolveTaskName(name: String, containingFile: PsiFile): String? {
         return containingFile.virtualFile?.let { file ->
             resolveTaskName(name, containingFile.project, file)
         }

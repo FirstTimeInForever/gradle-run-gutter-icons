@@ -2,20 +2,20 @@ import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.changelog.closure
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.tasks.RunIdeTask
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
     id("java")
     kotlin("jvm")
-    id("org.jetbrains.intellij") version "0.7.2"
+    id("org.jetbrains.intellij") version "1.15.0"
     id("org.jetbrains.changelog") version "1.1.2"
     id("io.gitlab.arturbosch.detekt") version "1.15.0"
     id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
 }
 
-val kotlinVersion: String by project
 val pluginSinceBuild: String by project
 val pluginUntilBuild: String by project
 val platformVersion: String by project
@@ -31,15 +31,15 @@ dependencies {
 }
 
 intellij {
-    version = platformVersion
-    type = platformType
-    updateSinceUntilBuild = true
+    version.set(platformVersion)
+    type.set(platformType)
+    updateSinceUntilBuild.set(true)
 
     val plugins = properties("platformPlugins")
         .split(',')
         .map(String::trim)
         .filter(String::isNotEmpty)
-    setPlugins(*plugins.toTypedArray())
+    this.plugins.set(plugins)
 }
 
 changelog {
@@ -60,58 +60,60 @@ detekt {
     }
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+        languageVersion.set(KotlinVersion.KOTLIN_1_7)
+        apiVersion.set(KotlinVersion.KOTLIN_1_7)
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 tasks {
-    withType<JavaCompile> {
-        sourceCompatibility = JavaVersion.VERSION_1_8.toString()
-        targetCompatibility = JavaVersion.VERSION_1_8.toString()
-    }
-
-    withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-
     withType<Detekt> {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
-
     patchPluginXml {
-        version(project.version)
-        sinceBuild(pluginSinceBuild)
-        untilBuild(pluginUntilBuild)
-        pluginDescription(
-            closure {
-                val readmeLines = File(projectDir, "README.md").readText().lines()
-                val start = "<!-- Plugin description -->"
-                val end = "<!-- Plugin description end -->"
-                if (!readmeLines.containsAll(listOf(start, end))) {
-                    throw GradleException("Plugin description section not found in README.md:\n$start ... $end")
-                }
-                val html = readmeLines.run {
-                    subList(indexOf(start) + 1, indexOf(end))
-                }.joinToString("\n")
-                markdownToHTML(html)
+        version.set(project.version.toString())
+        sinceBuild.set(pluginSinceBuild)
+        untilBuild.set(pluginUntilBuild)
+        pluginDescription.set(provider {
+            val readmeLines = File(projectDir, "README.md").readText().lines()
+            val start = "<!-- Plugin description -->"
+            val end = "<!-- Plugin description end -->"
+            if (!readmeLines.containsAll(listOf(start, end))) {
+                throw GradleException("Plugin description section not found in README.md:\n$start ... $end")
             }
-        )
-        changeNotes(
-            closure {
-                changelog.getLatest().toHTML()
-            }
-        )
+            val html = readmeLines.run {
+                subList(indexOf(start) + 1, indexOf(end))
+            }.joinToString("\n")
+            markdownToHTML(html)
+        })
+        changeNotes.set(provider {
+            changelog.getLatest().toHTML()
+        })
     }
 
     runPluginVerifier {
-        ideVersions(properties("pluginVerifierIdeVersions"))
+        ideVersions.set(provider {
+            val versions = properties("pluginVerifierIdeVersions")
+            versions.split(',').map(String::trim).filter(String::isNotEmpty)
+        })
     }
 
     publishPlugin {
         dependsOn("patchChangelog")
-        token(System.getenv("PUBLISH_TOKEN"))
+        token.set(System.getenv("PUBLISH_TOKEN"))
         val releaseChannel = project.version.toString()
             .split('-')
             .getOrElse(1) { "default" }
             .split('.')
             .first()
-        channels(releaseChannel)
+        channels.set(listOf(releaseChannel))
     }
 }
 

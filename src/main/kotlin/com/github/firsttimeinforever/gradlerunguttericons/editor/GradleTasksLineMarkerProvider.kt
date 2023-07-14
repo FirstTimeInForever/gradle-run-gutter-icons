@@ -10,14 +10,13 @@ import com.intellij.openapi.editor.markup.GutterIconRenderer
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.impl.DebugUtil
-import com.intellij.psi.util.findDescendantOfType
-import org.jetbrains.kotlin.idea.core.util.range
 import org.jetbrains.kotlin.psi.KtCallExpression
 import org.jetbrains.kotlin.psi.KtDotQualifiedExpression
 import org.jetbrains.kotlin.psi.KtNameReferenceExpression
 import org.jetbrains.kotlin.psi.KtProperty
 import org.jetbrains.kotlin.psi.KtPropertyDelegate
 import org.jetbrains.kotlin.psi.KtStringTemplateExpression
+import org.jetbrains.kotlin.psi.psiUtil.findDescendantOfType
 
 class GradleTasksLineMarkerProvider : RelatedItemLineMarkerProvider() {
     override fun collectNavigationMarkers(
@@ -76,7 +75,7 @@ class GradleTasksLineMarkerProvider : RelatedItemLineMarkerProvider() {
         val containingFile = element.containingFile ?: return null
         return RelatedItemLineMarkerInfo(
             element,
-            element.range,
+            element.textRange,
             AllIcons.Actions.Execute,
             { Messages.message("line.marker.tooltip.text", taskName) },
             { _, _ -> actuallyRunTask(taskName, containingFile) },
